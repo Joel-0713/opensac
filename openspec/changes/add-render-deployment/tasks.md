@@ -1,0 +1,3 @@
+- [x] Add a `render.yaml` blueprint (free web service, Python 3.11.9, start: uvicorn app:app --host 0.0.0.0 --port $PORT).
+- [x] Add a `GET /healthz` endpoint for Render health checks.
+- [x] Verify `.env` is not tracked by git.

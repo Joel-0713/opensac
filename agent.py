@@ -1,4 +1,6 @@
 import os
+from dotenv import load_dotenv
+load_dotenv()
 from typing import Annotated, Literal
 from typing_extensions import TypedDict
 from pydantic import BaseModel, Field
@@ -62,7 +64,7 @@ safe_tools_list = [query_service_health, search_remediation_runbooks]
 sensitive_tools_list = [escalate_ticket]
 all_tools = safe_tools_list + sensitive_tools_list
 
-llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", temperature=0)
+llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro-latest", temperature=0)
 llm_with_tools = llm.bind_tools(all_tools)
 
 def extract_text(content) -> str:
@@ -137,7 +139,7 @@ def get_agent_app():
     if not db_url:
         raise ValueError("DATABASE_URL must be set.")
         
-    pool = ConnectionPool(db_url, max_size=10, autocommit=True, kwargs={"prepare_threshold": None})
+    pool = ConnectionPool(db_url, max_size=10, kwargs={"autocommit": True, "prepare_threshold": None, "connect_timeout": 15})
     checkpointer = PostgresSaver(pool)
     checkpointer.setup()
     
