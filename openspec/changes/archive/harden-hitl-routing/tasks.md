@@ -1,0 +1,4 @@
+- [x] Modify `route_tools` in `agent.py` to iterate over all `last_message.tool_calls` and return `"sensitive_tools"` if any call is in `sensitive_tools_list`.
+- [x] Update the `/chat` endpoint in `app.py` to filter and return a list of all sensitive pending actions.
+- [x] Update the `/approve` endpoint in `app.py` rejection logic to append a `ToolMessage` for *every* tool call ID in `last_message.tool_calls`.
+- [x] Add regression tests in `tests/test_agent.py` to simulate mixed safe+sensitive tool calls and verify proper routing and rejection handling.
