@@ -1,0 +1,11 @@
+gradio
+fastapi
+uvicorn
+langgraph
+langgraph-checkpoint-postgres
+langchain-google-genai
+langchain-core
+psycopg[binary,pool]
+python-dotenv
+pydantic
+pytest
